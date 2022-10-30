@@ -1,4 +1,5 @@
 --V1.0 Written by seckinalbamya
+--Please read README.md file for understanding the input signal and the code given below.
 library ieee;
 use ieee.std_logic_1164.all;
 use IEEE.numeric_std.all;
