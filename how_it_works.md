@@ -2,8 +2,8 @@ RC PPM to PWM converter design on VHDL for FPGA boards
 
 What is the RC PPM Signal?
 
-    RC PPM signal is a signal which has to contain more than one channel in one wire. It encodes channel values by using on square wave signal. 
-    The output value depends on the length of two rising edges.
+RC PPM signal is a signal which has to contain more than one channel in one wire. It encodes channel values by using on square wave signal. 
+The output value depends on the length of two rising edges.
 
 ![ppm_decoding](https://user-images.githubusercontent.com/43293467/198899385-43628ed2-1ad2-46ac-addb-31e2c1f7685d.gif)
 
@@ -22,24 +22,23 @@ There are 3 modules:
 
 1-) ppm_decoder.vhd
 
-  It decodes the input PPM signal to the current ch value and ch number. It has 9 pairs of ch value and ch number but 8 of them are meaningful. 8 ch PPM signal has 9 square waves and 8 intervals between signals.
+It decodes the input PPM signal to the current ch value and ch number. It has 9 pairs of ch value and ch number but 8 of them are meaningful. 8 ch PPM signal has 9 square waves and 8 intervals between signals.
   
-  o_ch_number(X) and o_ch_value(X) are the output values in integer type.
-
-  o_ch_number(0) and o_ch_value(0) are not meaningful signal for output.
+o_ch_number(X) and o_ch_value(X) are the output values in integer type.
+o_ch_number(0) and o_ch_value(0) are not meaningful signal for output.
   
-  Assume that all outputs are %100. There are 8 signals and the length of the all signal is 8 * 2000us = 16000us.
-  We know that the period of the signal is 20000us (50Hz). So there should be 4000us free time at the end of the signal. This module uses this free time to be synchronous with the starting point of the signal. This time is a generic parameter in ppm_decoder.vhd module. It should be 4000 (us) for 8 ch converter.
+Assume that all outputs are %100. There are 8 signals and the length of the all signal is 8 * 2000us = 16000us.
+We know that the period of the signal is 20000us (50Hz). So there should be 4000us free time at the end of the signal. This module uses this free time to be synchronous with the starting point of the signal. This time is a generic parameter in ppm_decoder.vhd module. It should be 4000 (us) for 8 ch converter.
 
   
 2-)pwm_encoder.vhd
 
-  It encodes the pwm signal by using two parameters which are i_duty and freq. Freq (frequency) is a generic parameter because it is a fixed value (50Hz) for RC          
-  compatibility devices. i_duty is channel value input in microsecond.
+It encodes the pwm signal by using two parameters which are i_duty and freq. Freq (frequency) is a generic parameter because it is a fixed value (50Hz) for RC          
+compatibility devices. i_duty is channel value input in microsecond.
   
 3-) ppm_in_pwm_out.vhd
 
-  It connects ppm_decoder and pwm_encoder modules together.
+It connects ppm_decoder and pwm_encoder modules together.
 
 ! PPM signal is time-based signal so the generic clock frequency parameter (freq) in the ppm_in_pwm_out.vhd must be correct.clock_freq_mhz must be the same but in different unit.
 
