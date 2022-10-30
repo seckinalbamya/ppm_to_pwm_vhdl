@@ -44,6 +44,11 @@ It connects ppm_decoder and pwm_encoder modules together.
 
 !IMPORTANT, the system creates a CORRECT OUTPUT SIGNAL after the end of the first full period (after 20-40ms). Because first of all, it should sync to the signal and then it gives meaningful data. Output is not useful before the data sync is completed! It takes at least 20ms, a maximum of 40ms.
 
+!IMPORTANT, the input and the output signals are inverted! FPGA and servo-receiver is not working at same voltage level. You must use a NPN transistor level shifter for inverting data and levelling the voltage level.
+
+<img width="627" alt="inverter schematics" src="https://user-images.githubusercontent.com/43293467/198905583-2c5a9a38-575c-4d54-9549-6c65117fac5e.png">
+
+
 The code decodes 8 channels PPM signal because most RC receivers use 8 channels PPM signal. 
 
 If you have a question about the code, please don't hesitate to contact me via seckinalbamya@gmail.com
