@@ -42,6 +42,8 @@ It connects ppm_decoder and pwm_encoder modules together.
 
 ! PPM signal is time-based signal so the generic clock frequency parameter (freq) in the ppm_in_pwm_out.vhd must be correct.clock_freq_mhz must be the same but in different unit.
 
+!IMPORTANT, the system creates a CORRECT OUTPUT SIGNAL after the end of the first full period (after 20-40ms). Because first of all, it should sync to the signal and then it gives meaningful data. Output is not useful before the data sync is completed! It takes at least 20ms, a maximum of 40ms.
+
 The code decodes 8 channels PPM signal because most RC receivers use 8 channels PPM signal. 
 
 If you have a question about the code, please don't hesitate to contact me via seckinalbamya@gmail.com
