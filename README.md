@@ -46,7 +46,7 @@ It connects ppm_decoder and pwm_encoder modules together.
 
 !IMPORTANT, the input and the output signals are inverted! FPGA and servo-receiver is not working at same voltage level. You must use a NPN transistor level shifter for inverting data and levelling the voltage level.
 
-<img width="627" alt="inverter schematics" src="https://user-images.githubusercontent.com/43293467/198905583-2c5a9a38-575c-4d54-9549-6c65117fac5e.png">
+<img width="627" alt="inverter schematics" src="https://user-images.githubusercontent.com/43293467/198905626-d1ae251b-6a2f-451c-b838-dbcb7dc80f43.png">
 
 
 The code decodes 8 channels PPM signal because most RC receivers use 8 channels PPM signal. 
