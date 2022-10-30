@@ -1,5 +1,5 @@
 --V1.0 Written by Seckin Albamya for detecting and measuring the width of channel values.
---Please read how_it_works.txt file for understanding the input signal and the code given below.
+--Please read README.md file for understanding the input signal and the code given below.
 library ieee;
 use ieee.std_logic_1164.all;
 
